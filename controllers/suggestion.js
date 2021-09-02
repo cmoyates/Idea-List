@@ -13,7 +13,8 @@ const create = async (req, res) => {
 const getOne = async (req, res) => {
     try {
         const {id} = req.params;
-        const obj = await Suggestion.getOne(id);
+        const {timezone} = req.body;
+        const obj = await Suggestion.getOne(id, timezone);
         res.json((obj) ? obj : "No suggestion exists with that ID");
     } catch (error) {
         console.log(error);
@@ -22,7 +23,8 @@ const getOne = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const allSuggestions = await Suggestion.getAll();
+        const {timezone} = req.body;
+        const allSuggestions = await Suggestion.getAll(timezone);
         res.json(allSuggestions);
     } catch (error) {
         console.log(error);
