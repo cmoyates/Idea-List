@@ -1,5 +1,4 @@
 const app = require("./app");
-
 const http = require('http');
 const server = http.createServer(app);
 const socketio = require('socket.io');
@@ -9,8 +8,7 @@ const io = socketio(server, {
     }
 });
 
-
-
+globalThis.io = io;
 
 io.on('connection', (socket) => {
 
@@ -22,13 +20,6 @@ io.on('connection', (socket) => {
 
         callback();
     })
-
-
-    // When a new suggestion gets added
-    socket.on('newSuggestion', (profile_id) => {
-        io.emit('suggestionAdded');
-    })
-
 
     // When a user disconnects
     socket.on('disconnect', () => {

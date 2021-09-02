@@ -18,6 +18,13 @@ class Suggestion{
             "INSERT INTO suggestions (user_name, content, ts) VALUES($1, $2, current_timestamp) RETURNING *",
             [user_name, content]
         );
+        if (globalThis.io) {
+            io.emit('suggestionAdded');
+            console.log("Woo!")
+        }
+        else {
+            console.log("Nope");
+        }
         return newSuggestion.rows[0];
     }
 
