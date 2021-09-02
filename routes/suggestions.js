@@ -5,7 +5,7 @@ const suggestion_controller = require("../controllers/suggestion");
 
 router.post("/", suggestion_controller.create);
 
-router.post("/:user_name/:content", suggestion_controller.createTwitch);
+router.get("/twitch/:user_name/:content", suggestion_controller.createTwitch);
 
 router.get("/:id/:timezone", suggestion_controller.getOne);
 

@@ -13,8 +13,8 @@ const create = async (req, res) => {
 const createTwitch = async (req, res) => {
     try {
         const {user_name, content} = req.params;
-        const newSuggestion = await Suggestion.create(user_name, content);
-        res.json(newSuggestion);
+        await Suggestion.create(user_name, content);
+        res.send("Suggestion logged!");
     } catch (error) {
         console.log(error);
     }
