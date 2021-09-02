@@ -20,15 +20,6 @@ io.on('connection', (socket) => {
 
         callback();
     })
-
-    // When a user disconnects
-    socket.on('disconnect', () => {
-        //const user = removeUser(socket.id);
-
-        /*if (user) {
-            io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
-        }*/
-    })
 });
 
 
