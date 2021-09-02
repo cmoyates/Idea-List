@@ -4,9 +4,9 @@ const cors = require("cors");
 
 app.use(cors());
 
-app.use("/:arg", async (req, res) => {
-    const {arg} = req.params;
-    const msg = `Success, you said: ${arg}`
+app.use("/:user/:suggestion", async (req, res) => {
+    const {user, suggestion} = req.params;
+    const msg = `Success, ${user} said: ${suggestion}`
     console.log(msg);
     res.send(msg);
 })
