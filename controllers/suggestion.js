@@ -10,10 +10,19 @@ const create = async (req, res) => {
     }
 }
 
+const createTwitch = async (req, res) => {
+    try {
+        const {user_name, content} = req.params;
+        const newSuggestion = await Suggestion.create(user_name, content);
+        res.json(newSuggestion);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const getOne = async (req, res) => {
     try {
-        const {id} = req.params;
-        const {timezone} = req.body;
+        const {id, timezone} = req.params;
         const obj = await Suggestion.getOne(id, timezone);
         res.json((obj) ? obj : "No suggestion exists with that ID");
     } catch (error) {
@@ -23,8 +32,9 @@ const getOne = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const {timezone} = req.body;
-        const allSuggestions = await Suggestion.getAll(timezone);
+        const {timezone} = req.params;
+        console.log(timezone);
+        const allSuggestions = await Suggestion.getAll(timezone.replace(/ /g, "/"));
         res.json(allSuggestions);
     } catch (error) {
         console.log(error);
@@ -54,6 +64,7 @@ const deleteOne = async (req, res) => {
 
 module.exports = {
     create,
+    createTwitch,
     getOne,
     getAll,
     update,
