@@ -22,8 +22,8 @@ const createTwitch = async (req, res) => {
 
 const getOne = async (req, res) => {
     try {
-        const {id, timezone} = req.params;
-        const obj = await Suggestion.getOne(id, timezone);
+        const {id} = req.params;
+        const obj = await Suggestion.getOne(id);
         res.json((obj) ? obj : "No suggestion exists with that ID");
     } catch (error) {
         console.log(error);
@@ -32,9 +32,7 @@ const getOne = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const {timezone} = req.params;
-        console.log(timezone);
-        const allSuggestions = await Suggestion.getAll(timezone.replace(/ /g, "/"));
+        const allSuggestions = await Suggestion.getAll();
         res.json(allSuggestions);
     } catch (error) {
         console.log(error);

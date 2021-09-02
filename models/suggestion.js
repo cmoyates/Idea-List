@@ -21,18 +21,17 @@ class Suggestion{
         return newSuggestion.rows[0];
     }
 
-    static async getOne(id, timezone) {
+    static async getOne(id) {
         const suggestion = await pool.query(
-            "SELECT suggestion_id, user_name, content, ts at time zone 'utc' at time zone $1 FROM suggestions WHERE suggestion_id = $2",
-            [timezone, id]
+            "SELECT suggestion_id, user_name, content, ts FROM suggestions WHERE suggestion_id = $2",
+            [id]
         );
         return suggestion.rows[0];
     }
 
-    static async getAll(timezone) {
+    static async getAll() {
         const allSuggestions = await pool.query(
-            "SELECT suggestion_id, user_name, content, ts at time zone 'utc' at time zone $1 FROM suggestions ORDER BY suggestion_id DESC",
-            [timezone]
+            "SELECT suggestion_id, user_name, content, ts FROM suggestions ORDER BY suggestion_id DESC"
         );
         return allSuggestions.rows
     }

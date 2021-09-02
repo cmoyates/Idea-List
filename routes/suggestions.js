@@ -7,9 +7,9 @@ router.post("/", suggestion_controller.create);
 
 router.get("/twitch/:user_name/:content", suggestion_controller.createTwitch);
 
-router.get("/:id/:timezone", suggestion_controller.getOne);
+router.get("/:id/", suggestion_controller.getOne);
 
-router.get("/:timezone", suggestion_controller.getAll);
+router.get("/", suggestion_controller.getAll);
 
 router.put("/:id", suggestion_controller.update);
 
