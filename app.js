@@ -15,7 +15,7 @@ app.use("/suggestions", suggestion_router);
 })*/
 
 app.use("/", async (req, res) => {
-    res.send("Stil working!");
+    res.send("Still working!");
 })
 
 module.exports = app;
