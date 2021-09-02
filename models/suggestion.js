@@ -19,7 +19,7 @@ class Suggestion{
             [user_name, content]
         );
         if (globalThis.io) {
-            io.emit('suggestionAdded');
+            io.emit('suggestionAdded', newSuggestion.rows[0]);
             console.log("Woo!")
         }
         else {
