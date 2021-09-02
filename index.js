@@ -17,8 +17,6 @@ io.on('connection', (socket) => {
     // When a user joins a room
     socket.on('join', (callback) => {
 
-        if (error) return callback(error);
-
         socket.join("room");
         console.log("User connected");
 
